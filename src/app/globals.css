@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.search-side-drawer {
+  left: 0px;
+
+  @media (min-width: 1056px) {
+    left: calc(50vw - 528px);
+  }
+}
+
+.disable-selection {
+  user-select: none;
+}
+
+body {
+  color: #fff;
+  background: #000;
+  overflow-y: scroll;
+
+  /*
+    Makes scrollbar smaller for components
+  */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+
+  &:hover {
+    background: #aaa;
+  }
+}
+
+kbd {
+  background-color: #111;
+  padding: 2px;
+  border: 1px #444 solid;
+  border-radius: 6px;
+  color: #999;
+}
+
+label.checkbox {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  user-select: none;
+
+  border-radius: 1000px;
+  background-color: #222;
+  border: 2px solid #555;
+
+  > input {
+    appearance: none;
+    inline-size: 100%;
+    block-size: 100%;
+    grid-area: 1/1;
+    border-radius: 1000px;
+    border: 2px solid #222;
+
+    &:hover {
+      outline: #10b981 2px solid;
+    }
+  }
+
+  > input:checked ~ svg {
+    color: #10b981;
+  }
+
+  > svg {
+    color: transparent;
+    pointer-events: none;
+    grid-area: 1/1;
+    border-radius: 1000px;
+    background-color: #222;
+
+    transition: all linear 100ms;
+  }
+}
+
+label.task-checkbox {
+  display: grid;
+
+  width: 14px;
+  height: 14px;
+  user-select: none;
+  transform: rotate(45deg);
+  align-self: start;
+  margin-top: 4px;
+
+  background-color: #222;
+  border: 2px solid #777;
+
+  > input {
+    appearance: none;
+    inline-size: 100%;
+    block-size: 100%;
+    grid-area: 1/1;
+    border: 2px solid #222;
+
+    &:hover {
+      outline: #fff 2px solid;
+    }
+  }
+
+  > input:checked ~ div {
+    background-color: #fff;
+  }
+
+  &:has(:checked) + div {
+    color: #404040;
+    text-decoration: line-through;
+  }
+
+  > div {
+    width: 80%;
+    height: 80%;
+    place-self: center;
+    color: transparent;
+    pointer-events: none;
+    grid-area: 1/1;
+    background-color: #222;
+
+    transition: all linear 100ms;
+  }
+}
+
+.primogem {
+  min-width: 18px;
+  min-height: 20px;
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 700;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(
+    160deg,
+    hsla(30, 100%, 96%, 1) 2%,
+    hsla(319, 91%, 87%, 1) 34%,
+    hsla(180, 100%, 96%, 1) 43%,
+    hsla(211, 95%, 64%, 1) 64%,
+    hsla(204, 56%, 72%, 1) 82%,
+    hsla(185, 97%, 88%, 1) 93%
+  );
+}

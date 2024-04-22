@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as Icons from "@/misc/icons";
 import { Drawer as Vaul } from "vaul";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import * as Search from "../#search/main";
 import DrawerHandle from "@/misc/drawer-handle";
 import { useI18n } from "@/locales/client";
@@ -109,8 +109,8 @@ function Category({
       ref={ref}
       className="my-1 flex w-full select-none rounded-md p-2 text-start transition-colors hover:bg-neutral-800 data-[selected=true]:bg-neutral-800"
     >
-      <Image
-        src={`/images/categories/${category.id}.webp`}
+      <CategoryImage
+        categoryID={category.id}
         width={28}
         height={28}
         alt="0"
@@ -169,8 +169,8 @@ function Drawer() {
   return (
     <Vaul.NestedRoot>
       <Vaul.Trigger className="flex h-20 w-full items-center justify-center gap-x-4 rounded-lg border border-neutral-600 bg-neutral-950 px-8 transition-all hover:border-neutral-400 hover:bg-neutral-800">
-        <Image
-          src={`/images/categories/${selectedCategory.id}.webp`}
+        <CategoryImage
+          categoryID={selectedCategory.id}
           width={48}
           height={48}
           alt="0"
@@ -203,6 +203,23 @@ function Drawer() {
         </Vaul.Content>
       </Vaul.Portal>
     </Vaul.NestedRoot>
+  );
+}
+
+function CategoryImage(
+  props: Omit<ImageProps, "src"> & { categoryID: number },
+) {
+  const { categoryID, ...other } = props;
+  const [imgSrc, setImgSrc] = useState(`/images/categories/${categoryID}.webp`);
+
+  return (
+    <Image
+      src={imgSrc}
+      onError={() => {
+        setImgSrc(`/images/categories/0.webp`);
+      }}
+      {...other}
+    />
   );
 }
 

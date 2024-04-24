@@ -45,12 +45,12 @@ function Tab() {
   return (
     <div className="min-h-screen w-[768px] border-neutral-700 px-1 md:border-l xl:border-x">
       {showSearchButton && (
-        <div className="pointer-events-none sticky top-[calc(100vh-72px)] z-10 mx-auto mr-4 h-0 text-end">
+        <div className="pointer-events-none sticky top-[calc(100dvh-72px)] z-10 mx-auto mr-4 h-0 text-end">
           <Search.Drawer />
         </div>
       )}
 
-      <div className="sticky -top-7 z-10 grid grid-cols-[1fr_150px] grid-rows-[28px_1fr] gap-1 border-b border-b-neutral-700 bg-black p-2 md:top-0 md:px-8 md:py-4">
+      <div className="sticky -top-7 z-10 grid grid-cols-[1fr_150px] grid-rows-[28px_1fr] gap-1 border-b border-b-neutral-700 bg-black p-2 md:top-0 md:grid-cols-[1fr_200px] md:px-8 md:py-4">
         <div className="col-start-1 row-start-1 text-neutral-400 md:text-2xl md:font-bold md:text-white">
           Achievements
         </div>
